@@ -16,10 +16,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
 
-Route::prefix('admin')->middleware('CheckIsAdmin')->group(function() {
+
+Route::prefix('admin')->middleware(['auth', 'CheckIsAdmin'])->group(function() {
+    Route::get('/', [App\Http\Controllers\AdminController::class, 'admin'])->name('admin');
     Route::get('/users', [App\Http\Controllers\AdminController::class, 'users'])->name('adminUsers');
     Route::get('/products', [App\Http\Controllers\AdminController::class, 'products'])->name('adminProducts');
     Route::get('/categories', [App\Http\Controllers\AdminController::class, 'categories'])->name('adminCategories');
@@ -29,4 +31,5 @@ Route::prefix('admin')->middleware('CheckIsAdmin')->group(function() {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
+Route::get('/recipes', [App\Http\Controllers\RecipesController::class, 'recipes'])->name('recipes');
+Route::get('/calculators', [App\Http\Controllers\CalculatorsController::class, 'calculators'])->name('calculators');
