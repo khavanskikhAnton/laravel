@@ -16,18 +16,20 @@ class ProfileController extends Controller
 
     public function save()
     {
-
-        request()->validate([
-            'name' => 'required',
-            'email' => 'email|required|unique:users',
-        ]);
-
         $input = request()->all();
         $name = $input['name'];
         $email = $input['email'];
         $userId = $input['userId'];
-
         $user = User::find($userId);
+
+        request()->validate([
+            'name' => 'required',
+            'email' => "email|required|unique:users,email, {$user->id}"
+        ]);
+
+        
+
+        
         $user->name = $name;
         $user->email = $email;
         $user->save();
