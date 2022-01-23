@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Categories;
+use App\Models\Products;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -27,12 +29,26 @@ class AdminController extends Controller
 
     public function products()
     {
-        return view('admin.products');
+        $products = Products::get();
+        
+
+        $data = [
+            'title' => 'Список продуктов',
+            'products' => $products
+        ];
+        return view('admin.products', $data);
     }
 
     public function categories()
     {
-        return view('admin.categories');
+        $categories = Categories::get();
+        
+
+        $data = [
+            'title' => 'Список продуктов',
+            'categories' => $categories
+        ];
+        return view('admin.categories', $data);
     }
 
     public function enterAsUser($id)

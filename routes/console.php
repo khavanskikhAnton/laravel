@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Category;
+use App\Models\User;
 use Illuminate\Foundation\Inspiring;
 use Illuminate\Support\Facades\Artisan;
 
@@ -14,6 +16,30 @@ use Illuminate\Support\Facades\Artisan;
 |
 */
 
+Artisan::command('deleteCategory', function() {
+    $category = new Category([
+        'name'=>'Видеокарты',
+        'discription'=> 'Ждем rtx 3050'
+    ]);
+    $category->save();
+});
+
+
+
+
+
+Artisan::command('createCategory', function() {
+    $category = new Category([
+        'name'=>'Видеокарты',
+        'discription'=> 'Ждем rtx 3050'
+    ]);
+    $category->save();
+});
+
 Artisan::command('inspire', function () {
+    $user = User::find(2);
+    $addresses = $user->addresses;
+    
+
     $this->comment(Inspiring::quote());
 })->purpose('Display an inspiring quote');
