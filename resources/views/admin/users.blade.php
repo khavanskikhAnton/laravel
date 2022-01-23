@@ -10,6 +10,10 @@
         {{ $title }}
     </h1>
 
+    <a href="{{route('adminUsers') }}">Список пользователей</a>
+    <a href="{{route('adminCategories') }}">Список категорий</a>
+    <a href="{{route('adminProducts') }}">Список продуктов</a>
+    
     <table class="table table-bordered">
         <thead>
             <tr>
