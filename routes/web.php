@@ -26,6 +26,8 @@ Route::prefix('admin')->middleware(['auth', 'CheckIsAdmin'])->group(function() {
     Route::get('/products', [App\Http\Controllers\AdminController::class, 'products'])->name('adminProducts');
     Route::get('/categories', [App\Http\Controllers\AdminController::class, 'categories'])->name('adminCategories');
     Route::get('/enterAsUser/{id}', [App\Http\Controllers\AdminController::class, 'enterAsUser'])->name('enterAsUser');
+    Route::get('/enterAsProduct/{id}', [App\Http\Controllers\AdminController::class, 'enterAsProduct'])->name('enterAsProduct');
+    
 });
 
 
@@ -33,7 +35,10 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-
 Route::get('/profile/{id}', [App\Http\Controllers\ProfileController::class, 'profile'])->name('profile');
 
 Route::post('/profile/save', [App\Http\Controllers\ProfileController::class, 'save'])->name('saveProfile');
+
+Route::get('/profileProduct/{id}', [App\Http\Controllers\ProfileProductController::class, 'profileProduct'])->name('profileProduct');
+
+Route::post('/profileProduct/save', [App\Http\Controllers\ProfileProductController::class, 'save'])->name('saveProfileProduct');

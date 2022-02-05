@@ -7,9 +7,7 @@
 @section('content')
     <h1>
         Список продуктов
-    </h1>
-
-    
+    </h1>    
 
     <a href="{{route('adminUsers') }}">Список пользователей</a>
     <a href="{{route('adminCategories') }}">Список категорий</a>
@@ -33,7 +31,7 @@
                     <td class="text-center">{{ $products->description }}</td>
                     <td class="text-center">{{ $products->category }}</td>
                     <td class="text-center">{{ $products->picture }}</td>
-                    
+                    <td><a href="{{ route('profileProduct', $products->id) }}">Редактировать</a></td>
                 </tr>
             @endforeach
             

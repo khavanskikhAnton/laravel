@@ -4,7 +4,6 @@
     Список пользователей
 @endsection
 
-
 @section('content')
     <h1>
         {{ $title }}
