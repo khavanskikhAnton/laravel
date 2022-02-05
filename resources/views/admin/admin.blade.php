@@ -5,7 +5,10 @@
 @endsection
 
 @section('content')
-    <a href="{{route('adminUsers') }}">Список пользователей</a>
-    <a href="{{route('adminCategories') }}">Список категорий</a>
-    <a href="{{route('adminProducts') }}">Список продуктов</a>
+
+    <ul class="navbar-bottom">
+        <li><a href="{{route('adminUsers') }}">Список пользователей</a></li>
+        <li><a href="{{route('adminCategories') }}">Список категорий</a></li>
+        <li><a href="{{route('adminProducts') }}">Список продуктов</a></li>
+    </ul>
 @endsection

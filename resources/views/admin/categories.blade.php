@@ -23,7 +23,7 @@
             </tr>
         </thead>
         <tbody>
-            @foreach ($categories as $category)
+            @foreach ($categories as $categories)
                 <tr>
                     <td class="text-center">{{ $categories->id }}</td>
                     <td class="text-center">{{ $categories->name }}</td>
@@ -34,6 +34,11 @@
             @endforeach
             
         </tbody>
+        
 
     </table>
+
+
+
+
 @endsection

@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Categories;
-use App\Models\Products;
+use App\Models\Category;
+use App\Models\Product;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -29,7 +29,7 @@ class AdminController extends Controller
 
     public function products()
     {
-        $products = Products::get();
+        $products = Product::get();
         
 
         $data = [
@@ -41,7 +41,7 @@ class AdminController extends Controller
 
     public function categories()
     {
-        $categories = Categories::get();
+        $categories = Category::get();
         
 
         $data = [

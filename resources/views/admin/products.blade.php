@@ -26,11 +26,11 @@
             </tr>
         </thead>
         <tbody>
-            @foreach ($products as $product)
+            @foreach ($products as $products)
                 <tr>
                     <td class="text-center">{{ $products->id }}</td>
                     <td class="text-center">{{ $products->name }}</td>
-                    <td class="text-center">{{ $products->discription }}</td>
+                    <td class="text-center">{{ $products->description }}</td>
                     <td class="text-center">{{ $products->category }}</td>
                     <td class="text-center">{{ $products->picture }}</td>
                     
