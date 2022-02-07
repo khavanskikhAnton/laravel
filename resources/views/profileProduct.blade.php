@@ -41,11 +41,11 @@
         </div>
 		  <div class="mb-3">
             <label class="form-label">Описание</label>
-            <input name="name" value="{{ $product->description }}" class="form-control">
+            <input name="description" value="{{ $product->description }}" class="form-control">
         </div>
 		  <div class="mb-3">
             <label class="form-label">Категория</label>
-            <input name="name" value="{{ $product->category }}" class="form-control">
+            <input name="category" value="{{ $product->category }}" class="form-control">
         </div>
         
         

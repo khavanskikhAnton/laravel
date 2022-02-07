@@ -2,9 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Address;
 use App\Models\Product;
-use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -16,11 +14,33 @@ class ProfileProductController extends Controller
         return view('profileProduct', compact('product'));
     }
 
+    public function save(Request $request)
+    {
+        $input = request()->all();
 
+        $name = $input['name'];
+        $description = $input['description'];
+        $productId = $input['productId'];
+        $picture = $input['picture'] ?? null;
+        $category = $input['category'];
+        $product = Product::find($productId);
 
+        request()->validate([
+            'name' => 'required',
+            'picture' => 'mimes: image,bmp,jpg,jpeg'
+        ]);
 
-
-	 
-
-
+        if($picture) {
+           
+            $ext = $picture->getClientOriginalExtension();
+            $fileName = time() . rand(10000, 99999) . '.' . $ext;
+            $picture->storeAs('public/products', $fileName);
+            $product->picture = $fileName;
+        }
+        $product->name = $name;
+        $product->description = $description;
+        $product->category = $category;
+        $product->save();
+        return back();
+    }
 }
