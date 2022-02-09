@@ -29,6 +29,7 @@ class HomeController extends Controller
     }
     public function category(Category $category)
     {
-       
+       $product = $category->product;
+       return view('category', compact('product'));
     }
 }
