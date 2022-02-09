@@ -35,6 +35,7 @@
                 <th class="text-center">Описание</th>
                 <th class="text-center">Категория</th>
                 <th class="text-center">Изображение</th>
+                <th class="text-center">Цена</th>
             </tr>
         </thead>
         <tbody>
@@ -43,8 +44,9 @@
                     <td class="text-center">{{ $products->id }}</td>
                     <td class="text-center">{{ $products->name }}</td>
                     <td class="text-center">{{ $products->description }}</td>
-                    <td class="text-center">{{ $products->category }}</td>
+                    <td class="text-center">{{ $products->category_id }}</td>
                     <td class="text-center">{{ $products->picture }}</td>
+                    <td class="text-center">{{ $products->price }}</td>
                     <td><a href="{{ route('profileProduct', $products->id) }}">Редактировать</a></td>
                 </tr>
             @endforeach

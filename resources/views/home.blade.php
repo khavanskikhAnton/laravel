@@ -11,7 +11,7 @@
         @foreach ($categories as $category)
             <div class="col-4">
                 <div class="card mb-4" style="width: 18rem;">
-                    <img src="{{ asset('storage') }}/{{ $category->picture }}" class="card-img-top" alt="{{ $category->name }}">
+                    <img src="{{ asset('storage/categories') }}/{{ $category->picture }}" class="card-img-top" alt="{{ $category->name }}">
                     <div class="card-body">
                         <h5 class="card-title">{{ $category->name }}</h5>
                         <p class="card-text">{{ $category->description }}</p>

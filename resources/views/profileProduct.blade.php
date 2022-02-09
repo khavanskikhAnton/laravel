@@ -55,7 +55,11 @@
         </div>
         <div class="mb-3">
             <label class="form-label">Категория</label>
-            <input name="category" value="{{ $product->category }}" class="form-control">
+            <input name="categoryId" value="{{ $product->category_id }}" class="form-control">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Цена</label>
+            <input name="price" value="{{ $product->price}}" class="form-control">
         </div>
         <button type="submit" class="btn btn-primary">Изменить</button>
     </form>

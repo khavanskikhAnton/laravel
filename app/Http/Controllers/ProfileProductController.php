@@ -22,7 +22,7 @@ class ProfileProductController extends Controller
         $description = $input['description'];
         $productId = $input['productId'];
         $picture = $input['picture'] ?? null;
-        $category = $input['category'];
+        $category = $input['categoryId'];
         $product = Product::find($productId);
 
         request()->validate([

@@ -205,8 +205,8 @@ Artisan::command('createProduct', function() {
     $product = new Product([
         'name'=>'RX800',
         'description'=> 'Самая лучшая видеокарта',
-        'category'=>'ghghghgh',
-        'picture'=>'no_picture'
+        'picture'=>'no_picture',
+        'price'=>'8',
     ]);
     $product->save();
 });
