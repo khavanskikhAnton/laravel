@@ -12,11 +12,21 @@
             border-radius: 50%;
             display:block;
         }
-       
+
+        .li-navbar {list-style:none;}
+        
+
     </style>
 @endsection
 
 @section('content')
+    <h1>Редактирование продукта</h1>
+
+    <ul class="navbar-bottom">
+        <li class="li-navbar"><a href="{{route('adminUsers') }}">Список пользователей</a></li>
+        <li class="li-navbar"><a href="{{route('adminCategories') }}">Список категорий</a></li>
+        <li class="li-navbar"><a href="{{route('adminProducts') }}">Список продуктов</a></li>
+    </ul>
 
     @if ($errors->isNotEmpty())
         <div class="alert alert-warning" role="alert">
@@ -43,14 +53,10 @@
             <label class="form-label">Описание</label>
             <input name="description" value="{{ $product->description }}" class="form-control">
         </div>
-		  <div class="mb-3">
+        <div class="mb-3">
             <label class="form-label">Категория</label>
             <input name="category" value="{{ $product->category }}" class="form-control">
         </div>
-        
-        
-            <div class="mb-3 form-check">
-            </div>
         <button type="submit" class="btn btn-primary">Изменить</button>
     </form>
 @endsection

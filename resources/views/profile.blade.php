@@ -12,11 +12,19 @@
             border-radius: 50%;
             display:block;
         }
+
+        .li-navbar {list-style:none};
        
     </style>
 @endsection
 
 @section('content')
+
+<ul class="navbar-bottom">
+		<li class="li-navbar"><a href="{{route('adminUsers') }}">Список пользователей</a></li>
+		<li class="li-navbar"><a href="{{route('adminCategories') }}">Список категорий</a></li>
+		<li class="li-navbar"><a href="{{route('adminProducts') }}">Список продуктов</a></li>
+	</ul>
 
     @if ($errors->isNotEmpty())
         <div class="alert alert-warning" role="alert">
