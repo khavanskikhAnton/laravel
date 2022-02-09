@@ -57,11 +57,7 @@ class AdminController extends Controller
         return redirect()->route('home');
     }
 
-    public function enterAsProduct($id)
-    {
-        Auth::loginUsingId($id);
-        return redirect()->route('profileProduct');
-    }
+    
 
     
 
