@@ -44,3 +44,9 @@ Route::post('/profileProduct/save', [App\Http\Controllers\ProfileProductControll
 Route::get('/profileCategory/{id}', [App\Http\Controllers\ProfileCategoryController::class, 'profileCategory'])->name('profileCategory');
 
 Route::post('/profileCategory/save', [App\Http\Controllers\ProfileCategoryController::class, 'save'])->name('saveProfileCategory');
+Route::post('/createCategory', [AdminController::class, 'createCategory'])->name('createCategory');
+Route::post('/deleteCategory/{id}', [AdminController::class, 'deleteCategory'])->name('deleteCategory');
+Route::post('/exportCategories', [AdminController::class, 'exportCategories'])->name('exportCategories');
+Route::post('/importCategories', [AdminController::class, 'importCategories'])->name('importCategories');
+Route::post('/createProduct', [AdminController::class, 'createProduct'])->name('createProduct');
+Route::post('/deleteProduct/{id}', [AdminController::class, 'deleteProduct'])->name('deleteProduct');

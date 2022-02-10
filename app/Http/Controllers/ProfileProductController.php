@@ -22,8 +22,9 @@ class ProfileProductController extends Controller
         $description = $input['description'];
         $productId = $input['productId'];
         $picture = $input['picture'] ?? null;
-        $category = $input['categoryId'];
+        $categoryId = $input['categoryId'] ; 
         $product = Product::find($productId);
+        $price = $input['price'];
 
         request()->validate([
             'name' => 'required',
@@ -39,7 +40,8 @@ class ProfileProductController extends Controller
         }
         $product->name = $name;
         $product->description = $description;
-        $product->category = $category;
+        $product->category_id = $categoryId;
+        $product->price = $price;
         $product->save();
         return back();
     }
