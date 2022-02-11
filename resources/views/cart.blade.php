@@ -73,13 +73,14 @@
     @if ($summ)
         <form method="post" action="{{ route('createOrder') }}">
             @csrf
-            <label>Ваше имя</label>
-            <input disabled class="form-control mb-2" name="name" value="{{ $user->name ?? '' }}">
-            <label>Ваш email</label>
-            <input disabled class="form-control mb-2" name="email" value="{{ $user->email ?? '' }}">
-            <label>Ваш адрес</label>
-            <input disabled class="form-control mb-2" name="address" value="{{ $user->addresses()->where('main', 1)->first()->address ?? '' }}">
-            <button type="submit" class="btn btn-warning">Оформить заказ</button>
+            <input placeholder="Имя" class="form-control mb-2" name='name' value="{{$user->name ?? ''}}">
+            <input placeholder="Почта" class="form-control mb-2" name='email' value="{{$user->email ?? ''}}">
+            <input placeholder="Адрес" class="form-control mb-2" name='address' value="{{$address}}">
+            <input id='register_confirmation' name='register_confirmation' type="checkbox">
+            <!-- не забудьте добавить оферту -->
+            <label for="register_confirmation">Вы будете автоматически зарегистрированы</label>
+            <br>
+            <button type="submit" class="btn btn-success">Оформить заказ</button>
         </form>
     @endif
 @endsection
