@@ -32,7 +32,6 @@ Route::prefix('admin')->middleware(['auth', 'CheckIsAdmin'])->group(function() {
 Auth::routes();
 
 
-
 Route::get('/profile/{id}', [App\Http\Controllers\ProfileController::class, 'profile'])->name('profile');
 Route::get('/category/{category}', [App\Http\Controllers\HomeController::class, 'category'])->name('category');
 Route::post('/profile/save', [App\Http\Controllers\ProfileController::class, 'save'])->name('saveProfile');
@@ -50,3 +49,10 @@ Route::post('/exportCategories', [AdminController::class, 'exportCategories'])->
 Route::post('/importCategories', [AdminController::class, 'importCategories'])->name('importCategories');
 Route::post('/createProduct', [AdminController::class, 'createProduct'])->name('createProduct');
 Route::post('/deleteProduct/{id}', [AdminController::class, 'deleteProduct'])->name('deleteProduct');
+
+Route::prefix('cart')->group(function () {
+    Route::get('/', [CartController::class, 'cart'])->name('cart');
+    Route::post('/addToCart', [CartController::class, 'addToCart'])->name('addToCart');
+    Route::post('/removeFromCart', [CartController::class, 'removeFromCart'])->name('removeFromCart');
+    Route::post('/createOrder', [CartController::class, 'createOrder'])->name('createOrder');
+});

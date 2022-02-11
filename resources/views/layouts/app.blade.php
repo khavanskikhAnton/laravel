@@ -45,7 +45,11 @@
                     
 
                         <!-- Authentication Links -->
-                        
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('cart') }}">
+                                Корзина ({{ array_sum(session('cart') ?? []) }})
+                            </a>
+                        </li>
                         @guest
 
                                 

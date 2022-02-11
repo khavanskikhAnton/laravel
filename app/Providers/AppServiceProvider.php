@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Models\Category;
+
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -13,6 +15,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        
         //
     }
 
@@ -23,6 +26,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        
     }
 }
