@@ -13,4 +13,7 @@ class Address extends Model
         'address',
         'main',
     ];
-}
+
+    
+}   
+    

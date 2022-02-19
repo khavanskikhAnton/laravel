@@ -50,6 +50,9 @@ Route::post('/exportCategories', [AdminController::class, 'exportCategories'])->
 Route::post('/importCategories', [AdminController::class, 'importCategories'])->name('importCategories');
 Route::post('/createProduct', [AdminController::class, 'createProduct'])->name('createProduct');
 Route::post('/deleteProduct/{id}', [AdminController::class, 'deleteProduct'])->name('deleteProduct');
+Route::post('/exportProducts', [AdminController::class, 'exportProducts'])->name('exportProducts');
+Route::post('/importProducts', [AdminController::class, 'importProducts'])->name('importProducts');
+Route::post('/deleteExportFile', [AdminController::class, 'deleteExportFile'])->name('deleteExportFile');
 
 Route::prefix('cart')->group(function () {
     Route::get('/', [CartController::class, 'cart'])->name('cart');

@@ -73,9 +73,10 @@
     @if ($summ)
         <form method="post" action="{{ route('createOrder') }}">
             @csrf
+            <input hidden name='id' value="{{$user->id ?? ''}}">
             <input placeholder="Имя" class="form-control mb-2" name='name' value="{{$user->name ?? ''}}">
             <input placeholder="Почта" class="form-control mb-2" name='email' value="{{$user->email ?? ''}}">
-            <input placeholder="Адрес" class="form-control mb-2" name='address' value="{{$address}}">
+            <input placeholder="Адрес" class="form-control mb-2" name='address' value="{{$user->addresses()->where('main', 1)->first()->address ?? ''}}">
             <input id='register_confirmation' name='register_confirmation' type="checkbox">
             <!-- не забудьте добавить оферту -->
             <label for="register_confirmation">Вы будете автоматически зарегистрированы</label>

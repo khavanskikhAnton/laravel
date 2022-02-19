@@ -42,17 +42,17 @@
 								{{ $product->price }} руб
 							</div>
 							<div class="product-buttons">
+							<form method="post" action="{{ route('removeFromCart') }}">
+									@csrf
+									<input name="id" hidden value="{{ $product->id }}">
+									<button @empty (session("cart.$product->id")) disabled @endempty class="btn btn-danger">-</button>
+								</form>
+								
+								{{ session("cart.$product->id") ?? 0 }}
 								<form method="post" action="{{ route('addToCart')}}">
 									@csrf
 									<input name='id' hidden value="{{ $product->id }}">
 									<button class="btn btn-success">+</button>
-								</form>
-								{{ session("cart.$product->id") ?? 0 }}
-								<form method="post" action="{{ route('removeFromCart') }}">
-									@csrf
-									<input name="id" hidden value="{{ $product->id }}">
-									<button @empty (session("cart.$product->id")) disabled @endempty class="btn btn-danger">-</button>
-									
 								</form>
 							</div>
 						</div>
