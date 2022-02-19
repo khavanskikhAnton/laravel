@@ -9,6 +9,7 @@ use App\Jobs\ImportCategories;
 use App\Jobs\ImportProducts;
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -23,9 +24,11 @@ class AdminController extends Controller
 	public function users()
 	{
 		$users = User::get();
+		$roles = Role::get();
 		$data = [
 			'title' => 'Список пользователей',
-			'users' => $users
+			'users' => $users,
+			'roles' => $roles
 		];
 		return view('admin.users', $data);
 	}
@@ -211,7 +214,28 @@ class AdminController extends Controller
 		DeleteTemporaryFiles::dispatch();
 		return back();
 	}
+	public function addRole ()
+	{
+		request()->validate([
+			'name' => 'required|min:3',
+		]);
 
+		Role::create([
+			'name' => request('name')
+		]);
+		return back();
+	}
+
+	public function addRoleToUser ()
+	{
+		request()->validate([
+			'user_id' => 'required',
+			'role_id' => 'required',
+		]);
+		$user = User::find(request('user_id'));
+			$user->roles()->attach(Role::find(request('role_id')));
+		return back();
+	}
 
 }
 

@@ -20,13 +20,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::prefix('admin')->middleware(['auth', 'CheckIsAdmin'])->group(function() {
-    Route::get('/', [App\Http\Controllers\AdminController::class, 'admin'])->name('admin');
-    Route::get('/users', [App\Http\Controllers\AdminController::class, 'users'])->name('adminUsers');
-    Route::get('/products', [App\Http\Controllers\AdminController::class, 'products'])->name('adminProducts');
-    Route::get('/categories', [App\Http\Controllers\AdminController::class, 'categories'])->name('adminCategories');
-    Route::get('/enterAsUser/{id}', [App\Http\Controllers\AdminController::class, 'enterAsUser'])->name('enterAsUser');
-    
-    
+	Route::get('/', [App\Http\Controllers\AdminController::class, 'admin'])->name('admin');
+	Route::get('/users', [App\Http\Controllers\AdminController::class, 'users'])->name('adminUsers');
+	Route::get('/products', [App\Http\Controllers\AdminController::class, 'products'])->name('adminProducts');
+	Route::get('/categories', [App\Http\Controllers\AdminController::class, 'categories'])->name('adminCategories');
+	Route::get('/enterAsUser/{id}', [App\Http\Controllers\AdminController::class, 'enterAsUser'])->name('enterAsUser');
 });
 
 
@@ -55,8 +53,16 @@ Route::post('/importProducts', [AdminController::class, 'importProducts'])->name
 Route::post('/deleteExportFile', [AdminController::class, 'deleteExportFile'])->name('deleteExportFile');
 
 Route::prefix('cart')->group(function () {
-    Route::get('/', [CartController::class, 'cart'])->name('cart');
-    Route::post('/addToCart', [CartController::class, 'addToCart'])->name('addToCart');
-    Route::post('/removeFromCart', [CartController::class, 'removeFromCart'])->name('removeFromCart');
-    Route::post('/createOrder', [CartController::class, 'createOrder'])->name('createOrder');
+	Route::get('/', [CartController::class, 'cart'])->name('cart');
+	Route::post('/addToCart', [CartController::class, 'addToCart'])->name('addToCart');
+	Route::post('/removeFromCart', [CartController::class, 'removeFromCart'])->name('removeFromCart');
+	Route::post('/createOrder', [CartController::class, 'createOrder'])->name('createOrder');
+	Route::post('/repeatOrder', [CartController::class, 'repeatOrder'])->name('repeatOrder');
+});
+
+Route::prefix('roles')->group(function () {
+	Route::post('/add', [AdminController::class, 'addRole'])->name('addRole');
+	Route::post('/delete', [AdminController::class, 'deleteRole'])->name('deleteRole');
+	Route::post('/applyRole/{id}', [AdminController::class, 'applyRole'])->name('applyRole');
+	Route::post('/addRoleToUser', [AdminController::class, 'addRoleToUser'])->name('addRoleToUser');
 });
