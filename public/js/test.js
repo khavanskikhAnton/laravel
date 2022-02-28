@@ -1,8 +1,12 @@
-/******/ (() => { // webpackBootstrap
-var __webpack_exports__ = {};
-/*!******************************!*\
-  !*** ./resources/js/test.js ***!
-  \******************************/
-console.log("Hello world!!!!");
-/******/ })()
-;
+let name1 = 'anton'
+let name2 = 'liliya'
+console.log("anton>liliya", name1 > name2);
+
+
+
+
+
+
+
+
+console.log("!");

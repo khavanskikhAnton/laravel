@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::prefix('admin')->middleware(['auth', 'CheckIsAdmin'])->group(function() {
+Route::prefix('admin')->middleware(['auth', 'CheckIsAdmin'])->group(function () {
 	Route::get('/', [App\Http\Controllers\AdminController::class, 'admin'])->name('admin');
 	Route::get('/users', [App\Http\Controllers\AdminController::class, 'users'])->name('adminUsers');
 	Route::get('/products', [App\Http\Controllers\AdminController::class, 'products'])->name('adminProducts');
@@ -31,17 +31,19 @@ Route::prefix('admin')->middleware(['auth', 'CheckIsAdmin'])->group(function() {
 Auth::routes();
 
 
-Route::get('/profile/{id}', [App\Http\Controllers\ProfileController::class, 'profile'])->name('profile');
-Route::get('/category/{category}', [App\Http\Controllers\HomeController::class, 'category'])->name('category');
+Route::get('/profile/{user}', [App\Http\Controllers\ProfileController::class, 'profile'])->name('profile');
 Route::post('/profile/save', [App\Http\Controllers\ProfileController::class, 'save'])->name('saveProfile');
+Route::get('orders', [App\Http\Controllers\ProfileController::class, 'orders'])->name('orders');
 
 Route::get('/profileProduct/{id}', [App\Http\Controllers\ProfileProductController::class, 'profileProduct'])->name('profileProduct');
-
 Route::post('/profileProduct/save', [App\Http\Controllers\ProfileProductController::class, 'save'])->name('saveProfileProduct');
 
-Route::get('/profileCategory/{id}', [App\Http\Controllers\ProfileCategoryController::class, 'profileCategory'])->name('profileCategory');
 
+Route::get('/category/{category}', [App\Http\Controllers\HomeController::class, 'category'])->name('category');
+
+Route::get('/profileCategory/{id}', [App\Http\Controllers\ProfileCategoryController::class, 'profileCategory'])->name('profileCategory');
 Route::post('/profileCategory/save', [App\Http\Controllers\ProfileCategoryController::class, 'save'])->name('saveProfileCategory');
+
 Route::post('/createCategory', [AdminController::class, 'createCategory'])->name('createCategory');
 Route::post('/deleteCategory/{id}', [AdminController::class, 'deleteCategory'])->name('deleteCategory');
 Route::post('/exportCategories', [AdminController::class, 'exportCategories'])->name('exportCategories');
