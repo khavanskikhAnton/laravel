@@ -73,7 +73,7 @@ class CartController extends Controller
 			'name' => 'required',
 			'email' => 'required|email',
 			'address' => 'required',
-			'register_confirmation' => 'accepted'
+			
 		]);
 
 		DB::transaction(function () {
@@ -115,7 +115,7 @@ class CartController extends Controller
 			$data = [
 				'name' => $user->name,
 				'products' => $order->products,
-				'password' => $password
+				
 			];
 			Mail::to($user->email)->send(new OrderCreated($data));
 		});

@@ -12,46 +12,46 @@ use Illuminate\Queue\SerializesModels;
 
 class ImportCategories implements ShouldQueue
 {
-    use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
+	use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
-    /**
-     * Create a new job instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        //
-    }
+	/**
+	 * Create a new job instance.
+	 *
+	 * @return void
+	 */
+	public function __construct()
+	{
+		//
+	}
 
-    /**
-     * Execute the job.
-     *
-     * @return void
-     */
-    public function handle()
-    {
-        $path = 'storage/app/public/categories/importCategories.csv';
-        $file = fopen($path, 'r');
- 
-        $i = 0;
-        $insert = [];
-        while ($row = fgetcsv($file, 1000, ';')) {
-        
-            if ($i++ == 0) {
-                $bom = pack('H*', 'EFBBBF'); //Создает запись "невидимого символа", который создает Excel.
-                $row = preg_replace("/^$bom/", '', $row); //С помощью регулярного выражения ищет "символ" и заменяте его на пустое значение, после чего записывает результат в $row.
+	/**
+	 * Execute the job.
+	 *
+	 * @return void
+	 */
+	public function handle()
+	{
+		$path = 'storage/app/public/categories/importCategories.csv';
+		$file = fopen($path, 'r');
 
-                $columns = $row;
-                continue;
-            }
+		$i = 0;
+		$insert = [];
+		while ($row = fgetcsv($file, 1000, ';')) {
 
-            $data = array_combine($columns, $row);
-            $data['created_at'] = date('Y-m-d H:i:s');
-            $data['updated_at'] = date('Y-m-d H:i:s');
-            $insert [] = $data;
-        }
+			if ($i++ == 0) {
+				$bom = pack('H*', 'EFBBBF'); //Создает запись "невидимого символа", который создает Excel.
+				$row = preg_replace("/^$bom/", '', $row); //С помощью регулярного выражения ищет "символ" и заменяте его на пустое значение, после чего записывает результат в $row.
 
-        Category::insert($insert); 
-    }
+				$columns = $row;
+				continue;
+			}
+
+			$data = array_combine($columns, $row);
+			$data['created_at'] = date('Y-m-d H:i:s');
+			$data['updated_at'] = date('Y-m-d H:i:s');
+			$insert[] = $data;
+		}
+
+		Category::insert($insert);
+	}
 }

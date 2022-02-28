@@ -111,16 +111,14 @@ class AdminController extends Controller
 		$importFile = $input['importFile'] ?? null;
 
 		if ($importFile) {
-			// request()->validate([
-			//     'importFile' => 'mimetypes:text/*',
-			// ]);
+			
 			$mimeType = $request->file('importFile')->getMimeType();
 			$type = explode('/', $mimeType);
 			if ($type[0] == 'text') {
 
 				$ext = $importFile->getClientOriginalExtension();
 				$fileName = "importCategories." . $ext;
-				$importFile->storeAs('public/categories', $fileName);
+				$importFile->storeAs('storage/app/public/categories', $fileName);
 				ImportCategories::dispatch();
 				session()->flash('startImportCategories');
 			} else {
@@ -198,7 +196,7 @@ class AdminController extends Controller
 			if ($type[0] == 'text') {
 				$ext = $importFile->getClientOriginalExtension();
 				$fileName = "importProducts." . $ext;
-				$importFile->storeAs('public/products', $fileName);
+				$importFile->storeAs('public', $fileName);
 
 				ImportProducts::dispatch();
 				session()->flash('startImport');
